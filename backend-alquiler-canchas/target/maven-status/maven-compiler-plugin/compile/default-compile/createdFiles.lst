@@ -1,1 +1,9 @@
+com\example\backend_alquiler_canchas\repository\AdministradorRepository.class
+com\example\backend_alquiler_canchas\dto\LoginRequestDTO.class
+com\example\backend_alquiler_canchas\config\SecurityConfig.class
+com\example\backend_alquiler_canchas\controller\AdministradorController.class
+com\example\backend_alquiler_canchas\dto\LoginResponseDTO.class
+com\example\backend_alquiler_canchas\service\AdministradorService.class
+com\example\backend_alquiler_canchas\model\Administrador.class
 com\example\backend_alquiler_canchas\BackendAlquilerCanchasApplication.class
+com\example\backend_alquiler_canchas\dto\AdministradorDTO.class
