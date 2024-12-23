@@ -1,0 +1,105 @@
+// Variables
+$primary-color: #007B5F;
+$text-color: #333;
+$background-light: #f8f8f8;
+$background-footer: #f1f1f1;
+
+// General
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+  .logo {
+    h1 {
+      color: $primary-color;
+    }
+  }
+
+  nav {
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 15px;
+
+      li {
+        a {
+          text-decoration: none;
+          color: $text-color;
+          padding: 5px 10px;
+
+          &.btn {
+            background-color: $primary-color;
+            color: #fff;
+            border-radius: 5px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: $background-light;
+
+  .hero-content {
+    max-width: 50%;
+
+    h2 {
+      color: $primary-color;
+    }
+  }
+
+  .hero-image {
+    img {
+      width: 400px;
+      border-radius: 10px;
+    }
+  }
+}
+
+.snacks {
+  text-align: center;
+  padding: 20px;
+
+  img {
+    width: 80%;
+    max-width: 800px;
+    border-radius: 10px;
+  }
+}
+
+.contact {
+  text-align: center;
+  padding: 20px;
+  background-color: $primary-color;
+  color: #fff;
+}
+
+footer {
+  padding: 20px;
+  text-align: center;
+  background-color: $background-footer;
+
+  .stats {
+    p {
+      margin: 5px 0;
+      font-size: 14px;
+    }
+  }
+}
