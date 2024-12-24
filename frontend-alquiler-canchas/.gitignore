@@ -1,0 +1,27 @@
+# Node modules
+/node_modules/
+
+# Compiled files
+/dist/
+/out-tsc/
+
+# Logs
+*.log
+npm-debug.log*
+
+# IDEs
+/.idea/
+/.vscode/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Environment files (you may want to add your own environment-specific files)
+src/environments/*
+
+# Angular build output
+*.tgz
+
+# .env files
+.env
