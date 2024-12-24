@@ -3,6 +3,10 @@ package com.example.backend_alquiler_canchas.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "administrador")
@@ -36,4 +40,11 @@ public class Administrador {
     @Email(message = "Debe proporcionar un correo electrónico válido.")
     @Column(unique = true)
     private String correoElectronico;
+
+    @CreationTimestamp
+    @Column(updatable = false)
+    private LocalDateTime fechaCreacion;
+
+    @UpdateTimestamp
+    private LocalDateTime fechaModificacion;
 }
