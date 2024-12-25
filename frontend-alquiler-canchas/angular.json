@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ProyFacchas": {
+    "Facchas": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/proy-facchas",
+            "outputPath": "dist/facchas",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -69,10 +69,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "ProyFacchas:build:production"
+              "buildTarget": "Facchas:build:production"
             },
             "development": {
-              "buildTarget": "ProyFacchas:build:development"
+              "buildTarget": "Facchas:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -97,7 +97,6 @@
             ],
             "styles": [
               "src/styles.scss"
-              
             ],
             "scripts": []
           }
@@ -106,6 +105,6 @@
     }
   },
   "cli": {
-    "analytics": "bd1f563f-7f1a-4da8-827b-f4f67566a336"
+    "analytics": "7d5b07eb-9ac7-4e4d-8beb-2c4e81990ee2"
   }
 }
