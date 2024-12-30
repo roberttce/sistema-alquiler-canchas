@@ -70,11 +70,13 @@
 		</dependency>
 
 		<!-- Lombok (para reducir el código boilerplate como getters, setters, etc.) -->
-		<dependency>
+		 <dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<optional>true</optional>
+			<version>1.18.24</version> <!-- Usa la última versión estable -->
+			<scope>provided</scope> <!-- Lombok solo es necesario en tiempo de compilación -->
 		</dependency>
+
 
 		<!-- Spring Boot Starter Test (para pruebas unitarias y de integración) -->
 		<dependency>
@@ -102,6 +104,14 @@
 			<artifactId>jakarta.validation-api</artifactId>
 			<version>3.0.0</version> <!-- Ajusta la versión según sea necesario -->
 		</dependency>
+		 
+		 <dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.12.4</version> <!-- O usa otra versión si es necesario -->
+		</dependency>
+
+
 	</dependencies>
 
 

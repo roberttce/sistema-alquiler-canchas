@@ -1,5 +1,3 @@
-// Ubicación: src/main/java/com/example/backend_alquiler_canchas/dto/LoginResponseDTO.java
-
 package com.example.backend_alquiler_canchas.dto;
 
 import lombok.*;
@@ -8,6 +6,10 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class LoginResponseDTO {
-    private String mensaje;
     private Integer idAdministrador;
+    private String nombre;
+    private String apellido;
+    private String usuario;
+    private String correoElectronico;
+    private String token;
 }

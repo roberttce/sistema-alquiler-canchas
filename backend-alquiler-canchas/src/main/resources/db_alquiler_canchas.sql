@@ -72,3 +72,45 @@ create table reserva (
     foreign key (id_cliente) references cliente(id_cliente) on delete cascade,
     foreign key (id_cancha_deporte) references cancha_deporte(id_cancha_deporte) on delete cascade
 );
+
+ -- Inserciones para la tabla administrador
+    INSERT INTO administrador (nombre, apellido, usuario, contrasena, correo_electronico) 
+    VALUES 
+    ('Carlos', 'Pérez', 'cperez', 'contrasena123', 'cperez@correo.com'),
+    ('Ana', 'López', 'alvarez', '1234seguro', 'ana@correo.com'),
+    ('Luis', 'Gómez', 'lgomez', 'seguridad2024', 'luis@correo.com');
+
+    -- Inserciones para la tabla cliente
+    INSERT INTO cliente (nombre, apellido, correo_electronico, telefono, dni) 
+    VALUES 
+    ('Juan', 'Ramírez', 'juanr@correo.com', '987654321', '12345678'),
+    ('María', 'Vega', 'mariavega@correo.com', '912345678', '23456789'),
+    ('Pedro', 'Sánchez', 'pedros@correo.com', '634567890', '34567890');
+
+    -- Inserciones para la tabla deporte
+    INSERT INTO deporte (nombre_deporte, descripcion, costo_por_hora) 
+    VALUES 
+    ('Fútbol', 'Juego en equipo con balón', 50.00),
+    ('Tenis', 'Deporte individual con raqueta', 30.00),
+    ('Básquetbol', 'Deporte de equipo con balón en canasta', 40.00);
+
+    -- Inserciones para la tabla cancha
+    INSERT INTO cancha (nombre_cancha, estado) 
+    VALUES 
+    ('Cancha Principal', 'disponible'),
+    ('Cancha Secundaria', 'reservada'),
+    ('Cancha de Mantenimiento', 'mantenimiento');
+
+    -- Inserciones para la tabla intermedia cancha_deporte
+    INSERT INTO cancha_deporte (id_cancha, id_deporte) 
+    VALUES 
+    (1, 1),  -- Cancha Principal con Fútbol
+    (2, 2),  -- Cancha Secundaria con Tenis
+    (3, 3);  -- Cancha de Mantenimiento con Básquetbol
+
+    -- Inserciones para la tabla reserva
+    INSERT INTO reserva (fecha_reserva, hora_inicio, hora_fin, costo_total, id_cliente, id_cancha_deporte) 
+    VALUES 
+    ('2024-12-25', '10:00:00', '12:00:00', 100.00, 1, 1),   
+    ('2024-12-26', '14:00:00', '16:00:00', 60.00, 2, 2),   
+    ('2024-12-27', '18:00:00', '20:00:00', 80.00, 3, 3); 

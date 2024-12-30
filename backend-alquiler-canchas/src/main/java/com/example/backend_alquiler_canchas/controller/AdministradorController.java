@@ -53,13 +53,6 @@ public class AdministradorController {
         Administrador administrador = service.buscarPorId(id);  
         return ResponseEntity.ok(administrador);  
     }
-
-
-    @PostMapping("/login")
-    public ResponseEntity<LoginResponseDTO> iniciarSesion(@RequestBody LoginRequestDTO loginRequest) {
-        LoginResponseDTO response = service.autenticar(loginRequest.getUsuario(), loginRequest.getContrasena());
-        return ResponseEntity.ok(response);
-    }
 }
     
 

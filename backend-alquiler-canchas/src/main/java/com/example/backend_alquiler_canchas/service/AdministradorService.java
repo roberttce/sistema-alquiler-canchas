@@ -55,15 +55,4 @@ public class AdministradorService {
             return repository.save(administrador);
         }).orElseThrow(() -> new RuntimeException("Administrador no encontrado"));
     }
-
-    public LoginResponseDTO autenticar(String usuario, String contrasena) {
-    Administrador administrador = repository.findByUsuario(usuario)
-        .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
-
-    if (!passwordEncoder.matches(contrasena, administrador.getContrasena())) {
-        throw new RuntimeException("Contraseña incorrecta");
-    }
-
-    return new LoginResponseDTO("Inicio de sesión exitoso", administrador.getIdAdministrador());
-}
 }
