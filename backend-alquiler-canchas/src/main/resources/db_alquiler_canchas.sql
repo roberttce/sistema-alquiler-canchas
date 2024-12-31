@@ -69,6 +69,7 @@ create table reserva (
     id_cancha_deporte int not null,
     fecha_creacion datetime default current_timestamp,
     fecha_modificacion datetime default current_timestamp on update current_timestamp,
+    estado boolean default true,
     foreign key (id_cliente) references cliente(id_cliente) on delete cascade,
     foreign key (id_cancha_deporte) references cancha_deporte(id_cancha_deporte) on delete cascade
 );
