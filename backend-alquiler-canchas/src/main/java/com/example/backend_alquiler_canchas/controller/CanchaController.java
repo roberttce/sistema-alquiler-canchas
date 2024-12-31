@@ -2,6 +2,7 @@ package com.example.backend_alquiler_canchas.controller;
 
 import com.example.backend_alquiler_canchas.dto.CanchaDTO;
 import com.example.backend_alquiler_canchas.service.CanchaService;
+import com.example.backend_alquiler_canchas.util.GlobalResponse;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -21,28 +22,32 @@ public class CanchaController {
     }
 
     @PostMapping
-    public ResponseEntity<CanchaDTO> crearCancha(@Valid @RequestBody CanchaDTO canchaDTO) {
-        return ResponseEntity.ok(canchaService.crearCancha(canchaDTO));
+    public ResponseEntity<GlobalResponse<CanchaDTO>> crearCancha(@Valid @RequestBody CanchaDTO canchaDTO) {
+        CanchaDTO creado = canchaService.crearCancha(canchaDTO);
+        return ResponseEntity.ok(new GlobalResponse<>(true, "Cancha creada exitosamente", creado));
     }
 
     @GetMapping("/{idCancha}")
-    public ResponseEntity<CanchaDTO> obtenerCanchaPorId(@PathVariable Integer idCancha) {
-        return ResponseEntity.ok(canchaService.obtenerCanchaPorId(idCancha));
+    public ResponseEntity<GlobalResponse<CanchaDTO>> obtenerCanchaPorId(@PathVariable Integer idCancha) {
+        CanchaDTO cancha = canchaService.obtenerCanchaPorId(idCancha);
+        return ResponseEntity.ok(new GlobalResponse<>(true, "Cancha encontrada", cancha));
     }
 
     @GetMapping
-    public ResponseEntity<List<CanchaDTO>> listarCanchas() {
-        return ResponseEntity.ok(canchaService.listarCanchas());
+    public ResponseEntity<GlobalResponse<List<CanchaDTO>>> listarCanchas() {
+        List<CanchaDTO> canchas = canchaService.listarCanchas();
+        return ResponseEntity.ok(new GlobalResponse<>(true, "Lista de canchas obtenida exitosamente", canchas));
     }
 
     @PutMapping("/{idCancha}")
-    public ResponseEntity<CanchaDTO> actualizarCancha(@PathVariable Integer idCancha, @Valid @RequestBody CanchaDTO canchaDTO) {
-        return ResponseEntity.ok(canchaService.actualizarCancha(idCancha, canchaDTO));
+    public ResponseEntity<GlobalResponse<CanchaDTO>> actualizarCancha(@PathVariable Integer idCancha, @Valid @RequestBody CanchaDTO canchaDTO) {
+        CanchaDTO actualizado = canchaService.actualizarCancha(idCancha, canchaDTO);
+        return ResponseEntity.ok(new GlobalResponse<>(true, "Cancha actualizada exitosamente", actualizado));
     }
 
     @DeleteMapping("/{idCancha}")
-    public ResponseEntity<Void> eliminarCancha(@PathVariable Integer idCancha) {
+    public ResponseEntity<GlobalResponse<Void>> eliminarCancha(@PathVariable Integer idCancha) {
         canchaService.eliminarCancha(idCancha);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok(new GlobalResponse<>(true, "Cancha eliminada exitosamente", null));
     }
 }

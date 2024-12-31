@@ -44,7 +44,6 @@ public class DeporteService {
 
         deporte.setNombreDeporte(deporteDTO.getNombreDeporte());
         deporte.setDescripcion(deporteDTO.getDescripcion());
-        // Convertir Double a BigDecimal
         BigDecimal costoPorHora = new BigDecimal(deporteDTO.getCostoPorHora().toString());
         deporte.setCostoPorHora(costoPorHora);
 
@@ -62,7 +61,6 @@ public class DeporteService {
         return Deporte.builder()
                 .nombreDeporte(deporteDTO.getNombreDeporte())
                 .descripcion(deporteDTO.getDescripcion())
-                // Convertir Double a BigDecimal
                 .costoPorHora(new BigDecimal(deporteDTO.getCostoPorHora().toString()))
                 .build();
     }
@@ -76,3 +74,4 @@ public class DeporteService {
         );
     }
 }
+

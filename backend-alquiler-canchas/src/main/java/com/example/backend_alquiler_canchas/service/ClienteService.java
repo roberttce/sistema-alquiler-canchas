@@ -26,14 +26,13 @@ public class ClienteService {
     }
 
     public ClienteDTO obtenerClientePorId(Integer idCliente) {
-        return clienteRepository.findById(idCliente)
-                .map(this::mapearADTO)
+        Cliente cliente = clienteRepository.findById(idCliente)
                 .orElseThrow(() -> new IllegalArgumentException("Cliente no encontrado con ID: " + idCliente));
+        return mapearADTO(cliente);
     }
 
     public List<ClienteDTO> listarClientes() {
-        return clienteRepository.findAll()
-                .stream()
+        return clienteRepository.findAll().stream()
                 .map(this::mapearADTO)
                 .toList();
     }
@@ -48,8 +47,8 @@ public class ClienteService {
         clienteExistente.setTelefono(clienteDTO.getTelefono());
         clienteExistente.setDni(clienteDTO.getDni());
 
-        Cliente clienteActualizado = clienteRepository.save(clienteExistente);
-        return mapearADTO(clienteActualizado);
+        clienteExistente = clienteRepository.save(clienteExistente);
+        return mapearADTO(clienteExistente);
     }
 
     public void eliminarCliente(Integer idCliente) {

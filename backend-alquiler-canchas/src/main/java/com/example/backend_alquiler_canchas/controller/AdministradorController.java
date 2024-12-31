@@ -1,15 +1,12 @@
 package com.example.backend_alquiler_canchas.controller;
 
-import com.example.backend_alquiler_canchas.model.Administrador;
+import com.example.backend_alquiler_canchas.dto.AdministradorDTO;
 import com.example.backend_alquiler_canchas.service.AdministradorService;
+import com.example.backend_alquiler_canchas.util.GlobalResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import com.example.backend_alquiler_canchas.dto.LoginRequestDTO;
-import com.example.backend_alquiler_canchas.dto.AdministradorDTO;
-import com.example.backend_alquiler_canchas.dto.LoginResponseDTO;
-
 
 import java.util.List;
 
@@ -17,42 +14,40 @@ import java.util.List;
 @RequestMapping("/api/administradores")
 public class AdministradorController {
 
-    @Autowired
-    private AdministradorService service;
+    private final AdministradorService administradorService;
 
-    @GetMapping
-    public List<Administrador> listar() {
-        return service.listarTodos();
+    @Autowired
+    public AdministradorController(AdministradorService administradorService) {
+        this.administradorService = administradorService;
     }
 
     @PostMapping
-    public Administrador crear(@Validated @RequestBody Administrador administrador) {
-        return service.guardar(administrador);
+    public ResponseEntity<GlobalResponse<AdministradorDTO>> crearAdministrador(@Validated @RequestBody AdministradorDTO administradorDTO) {
+        AdministradorDTO administradorCreado = administradorService.crearAdministrador(administradorDTO);
+        return ResponseEntity.ok(new GlobalResponse<>(true, "Administrador creado exitosamente", administradorCreado));
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Administrador> actualizar(@PathVariable Integer id, @Validated @RequestBody Administrador administrador) {
-        Administrador actualizado = service.actualizar(id, administrador);
-        return ResponseEntity.ok(actualizado);
+    @GetMapping("/{idAdministrador}")
+    public ResponseEntity<GlobalResponse<AdministradorDTO>> obtenerAdministradorPorId(@PathVariable Integer idAdministrador) {
+        AdministradorDTO administrador = administradorService.obtenerAdministradorPorId(idAdministrador);
+        return ResponseEntity.ok(new GlobalResponse<>(true, "Administrador encontrado", administrador));
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminar(@PathVariable Integer id) {
-        service.eliminar(id);
-        return ResponseEntity.noContent().build();
+    @GetMapping
+    public ResponseEntity<GlobalResponse<List<AdministradorDTO>>> listarAdministradores() {
+        List<AdministradorDTO> administradores = administradorService.listarAdministradores();
+        return ResponseEntity.ok(new GlobalResponse<>(true, "Lista de administradores obtenida exitosamente", administradores));
     }
 
-    @PatchMapping("/{id}/cambiar-contrasena")
-    public ResponseEntity<Void> cambiarContrasena(@PathVariable Integer id, @RequestParam String nuevaContrasena) {
-        service.cambiarContrasena(id, nuevaContrasena);
-        return ResponseEntity.noContent().build();
+    @PutMapping("/{idAdministrador}")
+    public ResponseEntity<GlobalResponse<AdministradorDTO>> actualizarAdministrador(@PathVariable Integer idAdministrador, @Validated @RequestBody AdministradorDTO administradorDTO) {
+        AdministradorDTO administradorActualizado = administradorService.actualizarAdministrador(idAdministrador, administradorDTO);
+        return ResponseEntity.ok(new GlobalResponse<>(true, "Administrador actualizado exitosamente", administradorActualizado));
     }
-     
-    @GetMapping("/{id}")
-    public ResponseEntity<Administrador> buscarPorId(@PathVariable Integer id) {
-        Administrador administrador = service.buscarPorId(id);  
-        return ResponseEntity.ok(administrador);  
+
+    @DeleteMapping("/{idAdministrador}")
+    public ResponseEntity<GlobalResponse<Void>> eliminarAdministrador(@PathVariable Integer idAdministrador) {
+        administradorService.eliminarAdministrador(idAdministrador);
+        return ResponseEntity.ok(new GlobalResponse<>(true, "Administrador eliminado exitosamente", null));
     }
 }
-    
-

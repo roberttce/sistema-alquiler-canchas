@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CanchaService {
@@ -20,11 +19,6 @@ public class CanchaService {
     }
 
     public CanchaDTO crearCancha(CanchaDTO canchaDTO) {
-    // Si el estado no se proporciona, asignamos 'disponible' por defecto
-        if (canchaDTO.getEstado() == null || canchaDTO.getEstado().isEmpty()) {
-            canchaDTO.setEstado("disponible");
-        }
-
         Cancha cancha = mapearADominio(canchaDTO);
         cancha = canchaRepository.save(cancha);
         return mapearADTO(cancha);

@@ -6,6 +6,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AdministradorDTO {
+    private Integer idAdministrador;
     private String nombre;
     private String apellido;
     private String usuario;
