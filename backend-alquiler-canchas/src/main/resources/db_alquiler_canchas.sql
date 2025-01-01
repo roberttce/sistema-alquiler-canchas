@@ -69,6 +69,7 @@ create table reserva (
     id_cancha_deporte int not null,
     fecha_creacion datetime default current_timestamp,
     fecha_modificacion datetime default current_timestamp on update current_timestamp,
+    estado boolean default true,
     foreign key (id_cliente) references cliente(id_cliente) on delete cascade,
     foreign key (id_cancha_deporte) references cancha_deporte(id_cancha_deporte) on delete cascade
 );
@@ -109,8 +110,8 @@ create table reserva (
     (3, 3);  -- Cancha de Mantenimiento con Básquetbol
 
     -- Inserciones para la tabla reserva
-    INSERT INTO reserva (fecha_reserva, hora_inicio, hora_fin, costo_total, id_cliente, id_cancha_deporte) 
+    INSERT INTO reserva (fecha_reserva, hora_inicio, hora_fin, costo_total, id_cliente, id_cancha_deporte,estado) 
     VALUES 
-    ('2024-12-25', '10:00:00', '12:00:00', 100.00, 1, 1),   
-    ('2024-12-26', '14:00:00', '16:00:00', 60.00, 2, 2),   
-    ('2024-12-27', '18:00:00', '20:00:00', 80.00, 3, 3); 
+    ('2024-12-25', '10:00:00', '12:00:00', 100.00, 1, 1,1),   
+    ('2024-12-26', '14:00:00', '16:00:00', 60.00, 2, 2,1),   
+    ('2024-12-27', '18:00:00', '20:00:00', 80.00, 3, 3,0); 
