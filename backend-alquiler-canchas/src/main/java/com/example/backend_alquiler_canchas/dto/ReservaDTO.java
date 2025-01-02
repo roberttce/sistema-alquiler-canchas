@@ -12,4 +12,5 @@ public class ReservaDTO {
     private Double costoTotal;
     private Integer idCliente;
     private Integer idCanchaDeporte;
+    private boolean estado;
 }
