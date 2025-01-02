@@ -44,6 +44,9 @@ public class Reserva {
     @JoinColumn(name = "idCanchaDeporte", nullable = false, foreignKey = @ForeignKey(name = "fk_cancha_deporte"))
     private CanchaDeporte canchaDeporte;
 
+    @NotNull(message = "El estado de la reserva es obligatorio.")
+    private Boolean estado;
+
     @CreationTimestamp
     private LocalDateTime fechaCreacion;
 
